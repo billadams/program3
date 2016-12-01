@@ -20,6 +20,11 @@ namespace PizzaEmporium
         // Keep track of the current button we're working with.
         Object disabledButton = null;
 
+        private void frmOrder_Load(object sender, EventArgs e)
+        {
+            btnPizza.PerformClick();
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
@@ -131,7 +136,7 @@ namespace PizzaEmporium
             houseSalad.Text = "House Salad";
             houseSalad.Checked = true;
             houseSalad.TabIndex = 5;
-            houseSalad.Location = new Point(128, 48);
+            houseSalad.Location = new Point(128, 49);
             grpDisplay.Controls.Add(houseSalad);
 
             RadioButton chefSalad = new RadioButton();
@@ -170,6 +175,28 @@ namespace PizzaEmporium
             special2.Location = new Point(37, 115);
             special2.AutoSize = true;
             grpDisplay.Controls.Add(special2);
+        }
+
+        private void btnCoolStuff_Click(object sender, EventArgs e)
+        {
+            grpDisplay.Controls.Clear();
+            grpDisplay.Text = "Cool Stuff";
+
+            CheckBox tShirtPizzaCheesy = new CheckBox();
+            tShirtPizzaCheesy.Name = "chkPizzaCheesy";
+            tShirtPizzaCheesy.Text = "T-shirt: Pizza is Cheesy";
+            tShirtPizzaCheesy.TabIndex = 5;
+            tShirtPizzaCheesy.Location = new Point(37, 48);
+            tShirtPizzaCheesy.AutoSize = true;
+            grpDisplay.Controls.Add(tShirtPizzaCheesy);
+
+            CheckBox tShirtPizzaPizza = new CheckBox();
+            tShirtPizzaPizza.Name = "chkPizzaPizza";
+            tShirtPizzaPizza.Text = "T-shirt: Pizza! Pizza!";
+            tShirtPizzaPizza.TabIndex = 6;
+            tShirtPizzaPizza.Location = new Point(37, 115);
+            tShirtPizzaPizza.AutoSize = true;
+            grpDisplay.Controls.Add(tShirtPizzaPizza);
         }
     }
 }

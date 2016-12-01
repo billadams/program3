@@ -17,5 +17,30 @@ namespace PizzaEmporium
         void SaveOrder();
 
         void DeleteItem();
+
+        int OrderID
+        {
+            get;
+            set;
+        }
+
+        DateTime Date
+        {
+            get;
+            set;
+        }
+
+        string BranchName
+        {
+            get;
+            set;
+        }
+
+        decimal OrderTotal
+        {
+            get;
+            set;
+        }
+
     }
 }

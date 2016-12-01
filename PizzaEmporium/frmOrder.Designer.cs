@@ -97,6 +97,7 @@
             this.btnCoolStuff.TabIndex = 4;
             this.btnCoolStuff.Text = "Cool Stuff";
             this.btnCoolStuff.UseVisualStyleBackColor = true;
+            this.btnCoolStuff.Click += new System.EventHandler(this.btnCoolStuff_Click);
             // 
             // grpDisplay
             // 
@@ -260,6 +261,7 @@
             this.Controls.Add(this.btnPizza);
             this.Name = "frmOrder";
             this.Text = "Pizza Emporium";
+            this.Load += new System.EventHandler(this.frmOrder_Load);
             this.grpDisplay.ResumeLayout(false);
             this.grpDisplay.PerformLayout();
             this.ResumeLayout(false);

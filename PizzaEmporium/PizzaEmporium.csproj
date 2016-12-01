@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrentOrderDA.cs" />
     <Compile Include="Drink.cs" />
     <Compile Include="frmOrder.cs">
       <SubType>Form</SubType>
@@ -62,6 +63,7 @@
     <Compile Include="Promotional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salad.cs" />
+    <Compile Include="SaveOrderDA.cs" />
     <Compile Include="Specials.cs" />
     <EmbeddedResource Include="frmOrder.resx">
       <DependentUpon>frmOrder.cs</DependentUpon>
