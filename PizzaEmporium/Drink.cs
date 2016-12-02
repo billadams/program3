@@ -8,43 +8,31 @@ namespace PizzaEmporium
 {
     class Drink : Product
     {
-        public override string Description
+        private string mSize;
+
+        public Drink()
+        {
+
+        }
+
+        public Drink(int id, string description, decimal price, string size)
+            : base(id, description, price)
+        {
+            this.Size = size;
+        }
+
+        public String Size
         {
             get
             {
-                throw new NotImplementedException();
+                return mSize;
             }
-
             set
             {
-                throw new NotImplementedException();
+                mSize = value;
             }
         }
 
-        public override int ID
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public override decimal Price
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
     }
 }

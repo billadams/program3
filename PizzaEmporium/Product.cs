@@ -8,22 +8,58 @@ namespace PizzaEmporium
 {
     public abstract class Product
     {
-        public abstract string Description
+        private int mID;
+        private string mDescription;
+        private decimal mPrice;
+
+        public Product()
         {
-            get;
-            set;
+
         }
 
-        public abstract decimal Price
+        public Product(int id, string description, decimal price)
         {
-            get;
-            set;
+            this.ID = id;
+            this.Description = description;
+            this.Price = price;
         }
 
-        public abstract int ID
+        public int ID
         {
-            get;
-            set;
+            get
+            {
+                return mID;
+            }
+            set
+            {
+                mID = value;
+            }
         }
+
+        public string Description
+        {
+            get
+            {
+                return mDescription;
+            }
+            set
+            {
+                mDescription = value;
+            }
+        }
+
+        public decimal Price
+        {
+            get
+            {
+                return mPrice;
+            }
+            set
+            {
+                mPrice = value;
+            }
+        }
+
+
     }
 }

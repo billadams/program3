@@ -18,7 +18,9 @@ namespace PizzaEmporium
         }
 
         // Keep track of the current button we're working with.
-        Object disabledButton = null;
+        private RadioButton selectedrb;
+        private List<CheckBox> selectedcb = new List<CheckBox>();
+        Pizza pizza;
 
         private void frmOrder_Load(object sender, EventArgs e)
         {
@@ -27,7 +29,35 @@ namespace PizzaEmporium
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (grpDisplay.Text == "Pizza")
+            {
+                string[] toppings = new string[selectedcb.Count];
+                int i = 0;
+                foreach (CheckBox cb in selectedcb)
+                {
+                    toppings[i] = cb.Text;
+                    i++;
+                }
 
+                //pizza = new Pizza(selectedrb.Tag, "Pizza", 54m, selectedrb.Text, selectedcb);
+
+
+                if (selectedrb.Checked)
+                {
+                    MessageBox.Show(selectedrb.Text + " was selected");
+                }
+
+                string output = "";
+                 if (selectedcb.Count > 0)
+                {
+                    foreach(CheckBox cb in selectedcb)
+                    {
+                        output += cb.Text + "\n";
+                    }
+
+                    MessageBox.Show(output);
+                }
+            }
         }
 
         private void btnPizza_Click(object sender, EventArgs e)
@@ -36,13 +66,20 @@ namespace PizzaEmporium
             grpDisplay.Text = "Pizza";
 
             //disabledButton = this.btnPizza.Name;
+            //string[] sizes = { "sizeSmall", "sizeMedium", "sizeLarge" };
+
+            //for (int i = 0; i < sizes.Length; i++)
+            //{
+            //    RadioButton radioButton = new RadioButton();
+
+            //}
 
             RadioButton sizeSmall = new RadioButton();
             sizeSmall.Name = "radSmall";
             sizeSmall.Text = "Small";
-            sizeSmall.Checked = true;
             sizeSmall.TabIndex = 5;
             sizeSmall.Location = new Point(37, 49);
+            sizeSmall.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             grpDisplay.Controls.Add(sizeSmall);
 
             RadioButton sizeMedium = new RadioButton();
@@ -50,6 +87,7 @@ namespace PizzaEmporium
             sizeMedium.Text = "Medium";
             sizeMedium.TabIndex = 6;
             sizeMedium.Location = new Point(37, 115);
+            sizeMedium.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             grpDisplay.Controls.Add(sizeMedium);
 
             RadioButton sizeLarge = new RadioButton();
@@ -57,6 +95,7 @@ namespace PizzaEmporium
             sizeLarge.Text = "Large";
             sizeLarge.TabIndex = 7;
             sizeLarge.Location = new Point(37, 181);
+            sizeLarge.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             grpDisplay.Controls.Add(sizeLarge);
 
             CheckBox cheeseTopping = new CheckBox();
@@ -64,6 +103,7 @@ namespace PizzaEmporium
             cheeseTopping.Text = "Cheese";
             cheeseTopping.TabIndex = 8;
             cheeseTopping.Location = new Point(190, 27);
+            cheeseTopping.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
             grpDisplay.Controls.Add(cheeseTopping);
 
             CheckBox hamburgerTopping = new CheckBox();
@@ -71,6 +111,7 @@ namespace PizzaEmporium
             hamburgerTopping.Text = "Hamburger";
             hamburgerTopping.TabIndex = 9;
             hamburgerTopping.Location = new Point(190, 71);
+            hamburgerTopping.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
             grpDisplay.Controls.Add(hamburgerTopping);
 
             CheckBox greenPepperTopping = new CheckBox();
@@ -78,6 +119,7 @@ namespace PizzaEmporium
             greenPepperTopping.Text = "Green Pepper";
             greenPepperTopping.TabIndex = 10;
             greenPepperTopping.Location = new Point(190, 115);
+            greenPepperTopping.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
             grpDisplay.Controls.Add(greenPepperTopping);
 
             CheckBox blackOliveTopping = new CheckBox();
@@ -85,6 +127,7 @@ namespace PizzaEmporium
             blackOliveTopping.Text = "Black Olive";
             blackOliveTopping.TabIndex = 11;
             blackOliveTopping.Location = new Point(190, 159);
+            blackOliveTopping.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
             grpDisplay.Controls.Add(blackOliveTopping);
 
             CheckBox veggieTopping = new CheckBox();
@@ -92,6 +135,7 @@ namespace PizzaEmporium
             veggieTopping.Text = "Veggie";
             veggieTopping.TabIndex = 12;
             veggieTopping.Location = new Point(190, 203);
+            veggieTopping.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
             grpDisplay.Controls.Add(veggieTopping);
         }
 
@@ -197,6 +241,43 @@ namespace PizzaEmporium
             tShirtPizzaPizza.Location = new Point(37, 115);
             tShirtPizzaPizza.AutoSize = true;
             grpDisplay.Controls.Add(tShirtPizzaPizza);
+        }
+
+        void radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+
+            if (rb == null)
+            {
+                MessageBox.Show("Sender is not a RadioButton");
+                return;
+            }
+
+            // Ensure that the RadioButton.Checked property
+            // changed to true.
+            if (rb.Checked)
+            {
+                // Keep track of the selected RadioButton by saving a reference
+                // to it.
+                selectedrb = rb;
+            }
+        }
+
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+
+            if (cb == null)
+            {
+                MessageBox.Show("Sender is not a CheckBox");
+                return;
+            }
+
+            if (cb.Checked)
+            {
+                //MessageBox.Show(cb.Text);
+                selectedcb.Add(cb);
+            }
         }
     }
 }

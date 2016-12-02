@@ -34,19 +34,10 @@
             this.btnSpecials = new System.Windows.Forms.Button();
             this.btnCoolStuff = new System.Windows.Forms.Button();
             this.grpDisplay = new System.Windows.Forms.GroupBox();
-            this.chkVeggie = new System.Windows.Forms.CheckBox();
-            this.chkBlackOlive = new System.Windows.Forms.CheckBox();
-            this.chkGreenPepper = new System.Windows.Forms.CheckBox();
-            this.chkHamburger = new System.Windows.Forms.CheckBox();
-            this.chkCheese = new System.Windows.Forms.CheckBox();
-            this.radLarge = new System.Windows.Forms.RadioButton();
-            this.radMedium = new System.Windows.Forms.RadioButton();
-            this.radSmall = new System.Windows.Forms.RadioButton();
             this.lstReceipt = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnFinish = new System.Windows.Forms.Button();
-            this.grpDisplay.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPizza
@@ -101,111 +92,12 @@
             // 
             // grpDisplay
             // 
-            this.grpDisplay.Controls.Add(this.chkVeggie);
-            this.grpDisplay.Controls.Add(this.chkBlackOlive);
-            this.grpDisplay.Controls.Add(this.chkGreenPepper);
-            this.grpDisplay.Controls.Add(this.chkHamburger);
-            this.grpDisplay.Controls.Add(this.chkCheese);
-            this.grpDisplay.Controls.Add(this.radLarge);
-            this.grpDisplay.Controls.Add(this.radMedium);
-            this.grpDisplay.Controls.Add(this.radSmall);
             this.grpDisplay.Location = new System.Drawing.Point(48, 160);
             this.grpDisplay.Name = "grpDisplay";
             this.grpDisplay.Size = new System.Drawing.Size(319, 246);
             this.grpDisplay.TabIndex = 5;
             this.grpDisplay.TabStop = false;
             this.grpDisplay.Text = "Pizza";
-            // 
-            // chkVeggie
-            // 
-            this.chkVeggie.AutoSize = true;
-            this.chkVeggie.Location = new System.Drawing.Point(190, 199);
-            this.chkVeggie.Name = "chkVeggie";
-            this.chkVeggie.Size = new System.Drawing.Size(59, 17);
-            this.chkVeggie.TabIndex = 7;
-            this.chkVeggie.Text = "Veggie";
-            this.chkVeggie.UseVisualStyleBackColor = true;
-            this.chkVeggie.Visible = false;
-            // 
-            // chkBlackOlive
-            // 
-            this.chkBlackOlive.AutoSize = true;
-            this.chkBlackOlive.Location = new System.Drawing.Point(190, 157);
-            this.chkBlackOlive.Name = "chkBlackOlive";
-            this.chkBlackOlive.Size = new System.Drawing.Size(80, 17);
-            this.chkBlackOlive.TabIndex = 6;
-            this.chkBlackOlive.Text = "Black Olive";
-            this.chkBlackOlive.UseVisualStyleBackColor = true;
-            this.chkBlackOlive.Visible = false;
-            // 
-            // chkGreenPepper
-            // 
-            this.chkGreenPepper.AutoSize = true;
-            this.chkGreenPepper.Location = new System.Drawing.Point(190, 115);
-            this.chkGreenPepper.Name = "chkGreenPepper";
-            this.chkGreenPepper.Size = new System.Drawing.Size(92, 17);
-            this.chkGreenPepper.TabIndex = 5;
-            this.chkGreenPepper.Text = "Green Pepper";
-            this.chkGreenPepper.UseVisualStyleBackColor = true;
-            this.chkGreenPepper.Visible = false;
-            // 
-            // chkHamburger
-            // 
-            this.chkHamburger.AutoSize = true;
-            this.chkHamburger.Location = new System.Drawing.Point(190, 74);
-            this.chkHamburger.Name = "chkHamburger";
-            this.chkHamburger.Size = new System.Drawing.Size(78, 17);
-            this.chkHamburger.TabIndex = 4;
-            this.chkHamburger.Text = "Hamburger";
-            this.chkHamburger.UseVisualStyleBackColor = true;
-            this.chkHamburger.Visible = false;
-            // 
-            // chkCheese
-            // 
-            this.chkCheese.AutoSize = true;
-            this.chkCheese.Location = new System.Drawing.Point(190, 33);
-            this.chkCheese.Name = "chkCheese";
-            this.chkCheese.Size = new System.Drawing.Size(62, 17);
-            this.chkCheese.TabIndex = 3;
-            this.chkCheese.Text = "Cheese";
-            this.chkCheese.UseVisualStyleBackColor = true;
-            this.chkCheese.Visible = false;
-            // 
-            // radLarge
-            // 
-            this.radLarge.AutoSize = true;
-            this.radLarge.Location = new System.Drawing.Point(37, 175);
-            this.radLarge.Name = "radLarge";
-            this.radLarge.Size = new System.Drawing.Size(52, 17);
-            this.radLarge.TabIndex = 2;
-            this.radLarge.TabStop = true;
-            this.radLarge.Text = "Large";
-            this.radLarge.UseVisualStyleBackColor = true;
-            this.radLarge.Visible = false;
-            // 
-            // radMedium
-            // 
-            this.radMedium.AutoSize = true;
-            this.radMedium.Location = new System.Drawing.Point(37, 115);
-            this.radMedium.Name = "radMedium";
-            this.radMedium.Size = new System.Drawing.Size(62, 17);
-            this.radMedium.TabIndex = 1;
-            this.radMedium.TabStop = true;
-            this.radMedium.Text = "Medium";
-            this.radMedium.UseVisualStyleBackColor = true;
-            this.radMedium.Visible = false;
-            // 
-            // radSmall
-            // 
-            this.radSmall.AutoSize = true;
-            this.radSmall.Location = new System.Drawing.Point(37, 56);
-            this.radSmall.Name = "radSmall";
-            this.radSmall.Size = new System.Drawing.Size(50, 17);
-            this.radSmall.TabIndex = 0;
-            this.radSmall.TabStop = true;
-            this.radSmall.Text = "Small";
-            this.radSmall.UseVisualStyleBackColor = true;
-            this.radSmall.Visible = false;
             // 
             // lstReceipt
             // 
@@ -262,8 +154,6 @@
             this.Name = "frmOrder";
             this.Text = "Pizza Emporium";
             this.Load += new System.EventHandler(this.frmOrder_Load);
-            this.grpDisplay.ResumeLayout(false);
-            this.grpDisplay.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -276,14 +166,6 @@
         private System.Windows.Forms.Button btnSpecials;
         private System.Windows.Forms.Button btnCoolStuff;
         private System.Windows.Forms.GroupBox grpDisplay;
-        private System.Windows.Forms.CheckBox chkVeggie;
-        private System.Windows.Forms.CheckBox chkBlackOlive;
-        private System.Windows.Forms.CheckBox chkGreenPepper;
-        private System.Windows.Forms.CheckBox chkHamburger;
-        private System.Windows.Forms.CheckBox chkCheese;
-        private System.Windows.Forms.RadioButton radLarge;
-        private System.Windows.Forms.RadioButton radMedium;
-        private System.Windows.Forms.RadioButton radSmall;
         private System.Windows.Forms.ListBox lstReceipt;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRemove;
