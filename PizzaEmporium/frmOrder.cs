@@ -39,24 +39,25 @@ namespace PizzaEmporium
                     i++;
                 }
 
-                //pizza = new Pizza(selectedrb.Tag, "Pizza", 54m, selectedrb.Text, selectedcb);
+                pizza = new Pizza(105, "Pizza", 54m, selectedrb.Text, toppings);
 
+                lstReceipt.Items.Add(pizza.GetDisplayText());
 
-                if (selectedrb.Checked)
-                {
-                    MessageBox.Show(selectedrb.Text + " was selected");
-                }
+                //if (selectedrb.Checked)
+                //{
+                //    MessageBox.Show(selectedrb.Text + " was selected");
+                //}
 
-                string output = "";
-                 if (selectedcb.Count > 0)
-                {
-                    foreach(CheckBox cb in selectedcb)
-                    {
-                        output += cb.Text + "\n";
-                    }
+                //string output = "";
+                // if (selectedcb.Count > 0)
+                //{
+                //    foreach(CheckBox cb in selectedcb)
+                //    {
+                //        output += cb.Text + "\n";
+                //    }
 
-                    MessageBox.Show(output);
-                }
+                //    MessageBox.Show(output);
+                //}
             }
         }
 

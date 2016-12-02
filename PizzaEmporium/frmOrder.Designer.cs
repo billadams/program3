@@ -104,7 +104,7 @@
             this.lstReceipt.FormattingEnabled = true;
             this.lstReceipt.Location = new System.Drawing.Point(501, 160);
             this.lstReceipt.Name = "lstReceipt";
-            this.lstReceipt.Size = new System.Drawing.Size(251, 290);
+            this.lstReceipt.Size = new System.Drawing.Size(394, 290);
             this.lstReceipt.TabIndex = 6;
             this.lstReceipt.TabStop = false;
             // 
@@ -140,7 +140,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 534);
+            this.ClientSize = new System.Drawing.Size(941, 534);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnFinish);

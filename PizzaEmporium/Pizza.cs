@@ -21,6 +21,7 @@ namespace PizzaEmporium
         {
             this.Size = size;
             this.Toppings = toppings;
+            this.Price = GetPizzaPrice();
         }
 
         public string Size
@@ -47,11 +48,52 @@ namespace PizzaEmporium
             }
         }
 
-        public decimal GetPizzaPrice(int quantity)
+        public decimal GetPizzaPrice()
         {
-            decimal pizzaCost = Price * quantity;
+            decimal sizeCost = 0.0M;
+            int numToppings = Toppings.Length;
+
+            switch (Size)
+            {
+                case "Small":
+                    sizeCost = 9.89M;
+                    break;
+                case "Medium":
+                    sizeCost = 12.69M;
+                    break;
+                case "Large":
+                    sizeCost = 15.29M;
+                    break;
+            }
+
+            decimal toppingsCost = numToppings * 1.50M;
+
+            decimal pizzaCost = sizeCost + toppingsCost;
 
             return pizzaCost;
         }
+
+        public string GetDisplayText()
+        {
+            return this.Size + " " + this.Description + " " +
+                "(" + this.GetToppingsList() + ") - " + Price.ToString("c"); 
+        }
+
+        public string GetToppingsList()
+        {
+            string output = "";
+
+            for (int i = 0; i < Toppings.Length; i++)
+            {
+                output += Toppings[i];
+                if (i < (Toppings.Length - 1))
+                {
+                    output += ", ";
+                }
+            }
+
+            return output;
+        }
+
     }
 }
