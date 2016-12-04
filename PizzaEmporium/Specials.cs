@@ -8,6 +8,9 @@ namespace PizzaEmporium
 {
     class Specials : Product
     {
-
+        public override string GetDisplayText()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

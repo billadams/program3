@@ -16,8 +16,8 @@ namespace PizzaEmporium
 
         }
 
-        public Pizza(int id, string description, decimal price, string size, string[] toppings) 
-            : base (id, description, price)
+        public Pizza(int id, string description, string size, string[] toppings) 
+            : base (id, description)
         {
             this.Size = size;
             this.Toppings = toppings;
@@ -73,7 +73,7 @@ namespace PizzaEmporium
             return pizzaCost;
         }
 
-        public string GetDisplayText()
+        public override string GetDisplayText()
         {
             return this.Size + " " + this.Description + " " +
                 "(" + this.GetToppingsList() + ") - " + Price.ToString("c"); 

@@ -17,10 +17,9 @@ namespace PizzaEmporium
             InitializeComponent();
         }
 
-        // Keep track of the current button we're working with.
+        // Keep track of the current option/checkboxes we're working with.
         private RadioButton selectedrb;
-        private List<CheckBox> selectedcb = new List<CheckBox>();
-        Pizza pizza;
+        private List<CheckBox> selectedcb; /*= new List<CheckBox>();*/
 
         private void frmOrder_Load(object sender, EventArgs e)
         {
@@ -31,6 +30,33 @@ namespace PizzaEmporium
         {
             if (grpDisplay.Text == "Pizza")
             {
+                AddPizza();
+            }
+            else if (grpDisplay.Text == "Drinks")
+            {
+                AddDrinks();
+            }     
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (lstReceipt.SelectedIndex != -1)
+            {
+                int currentItem = lstReceipt.SelectedIndex;
+                lstReceipt.Items.RemoveAt(currentItem);
+            }
+        }
+
+        private void btnFinish_Click(object sender, EventArgs e)
+        {
+            lstReceipt.Items.Clear();
+        }
+
+        private void AddPizza()
+        {
+            try
+            {
+                // Create a string array based on the text property of each checkbox object.
                 string[] toppings = new string[selectedcb.Count];
                 int i = 0;
                 foreach (CheckBox cb in selectedcb)
@@ -39,25 +65,37 @@ namespace PizzaEmporium
                     i++;
                 }
 
-                pizza = new Pizza(105, "Pizza", 54m, selectedrb.Text, toppings);
-
+                Pizza pizza = new Pizza(105, "Pizza", selectedrb.Text, toppings);
                 lstReceipt.Items.Add(pizza.GetDisplayText());
 
-                //if (selectedrb.Checked)
-                //{
-                //    MessageBox.Show(selectedrb.Text + " was selected");
-                //}
+                // Clear the values of the option and checkboxes.
+                selectedrb.Checked = false;
+                selectedrb = null;
+                foreach (CheckBox cb in selectedcb)
+                {
+                    cb.Checked = false;
+                }
+                selectedcb = null;
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("You must select a pizza size and at least one ingredient.", "Selection error");
+            }
+        }
 
-                //string output = "";
-                // if (selectedcb.Count > 0)
-                //{
-                //    foreach(CheckBox cb in selectedcb)
-                //    {
-                //        output += cb.Text + "\n";
-                //    }
+        private void AddDrinks()
+        {
+            try
+            {
+                Drink drink = new Drink(106, "Drink", selectedrb.Text);
+                lstReceipt.Items.Add(drink.GetDisplayText());
 
-                //    MessageBox.Show(output);
-                //}
+                selectedrb.Checked = false;
+                selectedrb = null;
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("You must select a drink size", "Selection error");
             }
         }
 
@@ -151,9 +189,9 @@ namespace PizzaEmporium
             RadioButton smallDrink = new RadioButton();
             smallDrink.Name = "radSmallDrink";
             smallDrink.Text = "Small";
-            smallDrink.Checked = true;
             smallDrink.TabIndex = 5;
             smallDrink.Location = new Point(128, 49);
+            smallDrink.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             grpDisplay.Controls.Add(smallDrink);
 
             RadioButton mediumDrink = new RadioButton();
@@ -161,6 +199,7 @@ namespace PizzaEmporium
             mediumDrink.Text = "Medium";
             mediumDrink.TabIndex = 6;
             mediumDrink.Location = new Point(128, 115);
+            mediumDrink.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             grpDisplay.Controls.Add(mediumDrink);
 
             RadioButton largeDrink = new RadioButton();
@@ -168,6 +207,7 @@ namespace PizzaEmporium
             largeDrink.Text = "Large";
             largeDrink.TabIndex = 7;
             largeDrink.Location = new Point(128, 181);
+            largeDrink.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             grpDisplay.Controls.Add(largeDrink);
         }
 
@@ -268,6 +308,11 @@ namespace PizzaEmporium
         {
             CheckBox cb = sender as CheckBox;
 
+            // If selectedcb is null, we either haven't used it or we've
+            // nulled it after adding its contents to an order.
+            if (selectedcb == null)
+                selectedcb = new List<CheckBox>();
+        
             if (cb == null)
             {
                 MessageBox.Show("Sender is not a CheckBox");

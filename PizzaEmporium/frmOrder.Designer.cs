@@ -126,6 +126,7 @@
             this.btnRemove.TabIndex = 14;
             this.btnRemove.Text = "&Remove from order";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnFinish
             // 
@@ -135,6 +136,7 @@
             this.btnFinish.TabIndex = 15;
             this.btnFinish.Text = "&Finish";
             this.btnFinish.UseVisualStyleBackColor = true;
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // frmOrder
             // 

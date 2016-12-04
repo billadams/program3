@@ -15,10 +15,11 @@ namespace PizzaEmporium
 
         }
 
-        public Drink(int id, string description, decimal price, string size)
-            : base(id, description, price)
+        public Drink(int id, string description, string size)
+            : base(id, description)
         {
             this.Size = size;
+            this.Price = GetDrinkPrice();
         }
 
         public String Size
@@ -33,6 +34,29 @@ namespace PizzaEmporium
             }
         }
 
+        public decimal GetDrinkPrice()
+        {
+            decimal sizeCost = 0.0M;
 
+            switch (Size)
+            {
+                case "Small":
+                    sizeCost = 1.99M;
+                    break;
+                case "Medium":
+                    sizeCost = 2.99M;
+                    break;
+                case "Large":
+                    sizeCost = 3.99M;
+                    break;
+            }
+
+            return sizeCost;
+        }
+
+        public override string GetDisplayText()
+        {
+            return this.Size + " " + this.Description + " - " + this.Price.ToString("c");
+        }
     }
 }

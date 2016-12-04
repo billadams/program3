@@ -8,5 +8,9 @@ namespace PizzaEmporium
 {
     class Promotional : Product
     {
+        public override string GetDisplayText()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

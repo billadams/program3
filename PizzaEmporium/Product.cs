@@ -17,11 +17,10 @@ namespace PizzaEmporium
 
         }
 
-        public Product(int id, string description, decimal price)
+        public Product(int id, string description)
         {
             this.ID = id;
             this.Description = description;
-            this.Price = price;
         }
 
         public int ID
@@ -60,6 +59,6 @@ namespace PizzaEmporium
             }
         }
 
-
+        public abstract string GetDisplayText();
     }
 }
