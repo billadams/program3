@@ -131,7 +131,7 @@ namespace PizzaEmporium
         {
             try
             {
-                Specials special = new Specials(107, "Special", selectedrb.Text);
+                Specials special = new Specials(107, selectedrb.Text, Convert.ToString(selectedrb.Tag));
                 lstReceipt.Items.Add(special.GetDisplayText());
 
                 selectedrb.Checked = false;
@@ -145,7 +145,30 @@ namespace PizzaEmporium
 
         private void AddCoolStuff()
         {
+            try
+            {
+                // Create a string array based on the text property of each checkbox object.
+                string[] items = new string[selectedcb.Count];
+                int i = 0;
+                foreach (CheckBox cb in selectedcb)
+                {
+                    items[i] = cb.Text;
+                    i++;
+                }
 
+                Promotional promotional = new Promotional(108, "Promotional", items);
+                lstReceipt.Items.Add(promotional.GetDisplayText());
+
+                foreach (CheckBox cb in selectedcb)
+                {
+                    cb.Checked = false;
+                }
+                selectedcb = null;
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("You must select a promotional item.", "Selection error");
+            }
         }
 
         private void btnPizza_Click(object sender, EventArgs e)
@@ -267,7 +290,7 @@ namespace PizzaEmporium
 
             RadioButton houseSalad = new RadioButton();
             houseSalad.Name = "radHouseSalad";
-            houseSalad.Text = "House Salad";
+            houseSalad.Text = "House";
             houseSalad.TabIndex = 5;
             houseSalad.Location = new Point(128, 49);
             houseSalad.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
@@ -275,7 +298,7 @@ namespace PizzaEmporium
 
             RadioButton chefSalad = new RadioButton();
             chefSalad.Name = "radChefSalad";
-            chefSalad.Text = "Chef Salad";
+            chefSalad.Text = "Chef";
             chefSalad.TabIndex = 6;
             chefSalad.Location = new Point(128, 115);
             chefSalad.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
@@ -283,7 +306,7 @@ namespace PizzaEmporium
 
             RadioButton insalataSalad = new RadioButton();
             insalataSalad.Name = "radInsalataSalad";
-            insalataSalad.Text = "Insalata Salad";
+            insalataSalad.Text = "Insalata";
             insalataSalad.TabIndex = 7;
             insalataSalad.Location = new Point(128, 181);
             insalataSalad.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
@@ -298,7 +321,7 @@ namespace PizzaEmporium
             RadioButton special1 = new RadioButton();
             special1.Name = "radSpecial1";
             special1.Text = "Medium hamburger pizza, house salad,\n and medium drink";
-            special1.Tag = "special1";
+            special1.Tag = "Special1";
             special1.TabIndex = 5;
             special1.Location = new Point(37, 48);
             special1.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
@@ -308,7 +331,7 @@ namespace PizzaEmporium
             RadioButton special2 = new RadioButton();
             special2.Name = "radSpecial2";
             special2.Text = "Medium cheese pizza, insalata salad,\n and medium drink";
-            special2.Tag = "special2";
+            special2.Tag = "Special2";
             special2.TabIndex = 6;
             special2.Location = new Point(37, 115);
             special2.CheckedChanged += new EventHandler(radioButton_CheckedChanged);

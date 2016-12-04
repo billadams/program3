@@ -40,13 +40,13 @@ namespace PizzaEmporium
 
             switch (Type)
             {
-                case "House Salad":
+                case "House":
                     typeCost = 4.89M;
                     break;
-                case "Chef Salad":
+                case "Chef":
                     typeCost = 6.79M;
                     break;
-                case "Insalata Salad":
+                case "Insalata":
                     typeCost = 9.29M;
                     break;
             }

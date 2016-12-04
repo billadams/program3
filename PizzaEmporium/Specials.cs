@@ -37,26 +37,50 @@ namespace PizzaEmporium
         public decimal GetSpecialPrice()
         {
             decimal typeCost = 0.0M;
-            string[] toppings = { "Hamburger", "Cheese" };
+            string[] toppings = new string[1];
+            Pizza pizza;
+            Salad salad;
+            Drink drink;
+            decimal pizzaCost, saladCost, drinkCost;
 
-            Pizza pizza = new Pizza(107, "Pizza", "Medium", toppings[01]);
-
-            switch (Type)
+            if (this.Type == "Special1")
             {
-                case "special1":
-                    typeCost = 4.89M;
-                    break;
-                case "special2":
-                    typeCost = 6.79M;
-                    break;
+                toppings[0] = "Hamburger";
+
+                pizza = new Pizza(107, "Pizza", "Medium", toppings);
+                pizzaCost = pizza.GetPizzaPrice();
+
+                salad = new Salad(107, "Salad", "House");
+                saladCost = salad.GetSaladPrice();
+
+                drink = new Drink(107, "Drink", "Medium");
+                drinkCost = drink.GetDrinkPrice();
             }
+            else
+            {
+                toppings[0] = "Cheese";
+
+                pizza = new Pizza(107, "Pizza", "Medium", toppings);
+                pizzaCost = pizza.GetPizzaPrice();
+
+                salad = new Salad(107, "Salad", "Insalata");
+                saladCost = salad.GetSaladPrice();
+
+                drink = new Drink(107, "Drink", "Medium");
+                drinkCost = drink.GetDrinkPrice();
+            }
+
+            typeCost = pizzaCost + saladCost + drinkCost;
+
+            // 10% discount
+            typeCost /= 1.10M;
 
             return typeCost;
         }
 
         public override string GetDisplayText()
         {
-            return this.Type + " " + this.Description + " - " + this.Price.ToString("c");
+            return this.Description + ": " + this.Type + " - " + this.Price.ToString("c");
         }
     }
 }
