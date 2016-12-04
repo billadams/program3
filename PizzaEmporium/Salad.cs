@@ -8,9 +8,55 @@ namespace PizzaEmporium
 {
     class Salad : Product
     {
+        private string mType;
+
+        public Salad()
+        {
+
+        }
+
+        public Salad(int id, string description, string type)
+            : base(id, description)
+        {
+            this.Type = type;
+            this.Price = GetSaladPrice();
+        }
+
+        public string Type
+        {
+            get
+            {
+                return mType;
+            }
+            set
+            {
+                mType = value;
+            }
+        }
+
+        public decimal GetSaladPrice()
+        {
+            decimal typeCost = 0.0M;
+
+            switch (Type)
+            {
+                case "House Salad":
+                    typeCost = 4.89M;
+                    break;
+                case "Chef Salad":
+                    typeCost = 6.79M;
+                    break;
+                case "Insalata Salad":
+                    typeCost = 9.29M;
+                    break;
+            }
+
+            return typeCost;
+        }
+
         public override string GetDisplayText()
         {
-            throw new NotImplementedException();
+            return this.Type + " " + this.Description + " - " + this.Price.ToString("c");
         }
     }
 }

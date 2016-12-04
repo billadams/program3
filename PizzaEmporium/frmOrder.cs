@@ -35,7 +35,19 @@ namespace PizzaEmporium
             else if (grpDisplay.Text == "Drinks")
             {
                 AddDrinks();
-            }     
+            }
+            else if (grpDisplay.Text == "Salads")
+            {
+                AddSalads();
+            }
+            else if (grpDisplay.Text == "Specials")
+            {
+                AddSpecials();
+            }
+            else if (grpDisplay.Text == "Cool Stuff")
+            {
+                AddCoolStuff();
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -95,8 +107,45 @@ namespace PizzaEmporium
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("You must select a drink size", "Selection error");
+                MessageBox.Show("You must select a drink size.", "Selection error");
             }
+        }
+
+        private void AddSalads()
+        {
+            try
+            {
+                Salad salad = new Salad(107, "Salad", selectedrb.Text);
+                lstReceipt.Items.Add(salad.GetDisplayText());
+
+                selectedrb.Checked = false;
+                selectedrb = null;
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("You must select a salad size.", "Selection error");
+            }
+        }
+
+        private void AddSpecials()
+        {
+            try
+            {
+                Specials special = new Specials(107, "Special", selectedrb.Text);
+                lstReceipt.Items.Add(special.GetDisplayText());
+
+                selectedrb.Checked = false;
+                selectedrb = null;
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("You must select one special.", "Selection error");
+            }
+        }
+
+        private void AddCoolStuff()
+        {
+
         }
 
         private void btnPizza_Click(object sender, EventArgs e)
@@ -219,9 +268,9 @@ namespace PizzaEmporium
             RadioButton houseSalad = new RadioButton();
             houseSalad.Name = "radHouseSalad";
             houseSalad.Text = "House Salad";
-            houseSalad.Checked = true;
             houseSalad.TabIndex = 5;
             houseSalad.Location = new Point(128, 49);
+            houseSalad.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             grpDisplay.Controls.Add(houseSalad);
 
             RadioButton chefSalad = new RadioButton();
@@ -229,6 +278,7 @@ namespace PizzaEmporium
             chefSalad.Text = "Chef Salad";
             chefSalad.TabIndex = 6;
             chefSalad.Location = new Point(128, 115);
+            chefSalad.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             grpDisplay.Controls.Add(chefSalad);
 
             RadioButton insalataSalad = new RadioButton();
@@ -236,6 +286,7 @@ namespace PizzaEmporium
             insalataSalad.Text = "Insalata Salad";
             insalataSalad.TabIndex = 7;
             insalataSalad.Location = new Point(128, 181);
+            insalataSalad.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             grpDisplay.Controls.Add(insalataSalad);
         }
 
@@ -247,9 +298,9 @@ namespace PizzaEmporium
             RadioButton special1 = new RadioButton();
             special1.Name = "radSpecial1";
             special1.Text = "Medium hamburger pizza, house salad,\n and medium drink";
-            special1.Checked = true;
             special1.TabIndex = 5;
             special1.Location = new Point(37, 48);
+            special1.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             special1.AutoSize = true;
             grpDisplay.Controls.Add(special1);
 
@@ -258,6 +309,7 @@ namespace PizzaEmporium
             special2.Text = "Medium cheese pizza, insalata salad,\n and medium drink";
             special2.TabIndex = 6;
             special2.Location = new Point(37, 115);
+            special2.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             special2.AutoSize = true;
             grpDisplay.Controls.Add(special2);
         }
@@ -272,6 +324,7 @@ namespace PizzaEmporium
             tShirtPizzaCheesy.Text = "T-shirt: Pizza is Cheesy";
             tShirtPizzaCheesy.TabIndex = 5;
             tShirtPizzaCheesy.Location = new Point(37, 48);
+            tShirtPizzaCheesy.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
             tShirtPizzaCheesy.AutoSize = true;
             grpDisplay.Controls.Add(tShirtPizzaCheesy);
 
@@ -280,6 +333,7 @@ namespace PizzaEmporium
             tShirtPizzaPizza.Text = "T-shirt: Pizza! Pizza!";
             tShirtPizzaPizza.TabIndex = 6;
             tShirtPizzaPizza.Location = new Point(37, 115);
+            tShirtPizzaPizza.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
             tShirtPizzaPizza.AutoSize = true;
             grpDisplay.Controls.Add(tShirtPizzaPizza);
         }
