@@ -298,6 +298,7 @@ namespace PizzaEmporium
             RadioButton special1 = new RadioButton();
             special1.Name = "radSpecial1";
             special1.Text = "Medium hamburger pizza, house salad,\n and medium drink";
+            special1.Tag = "special1";
             special1.TabIndex = 5;
             special1.Location = new Point(37, 48);
             special1.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
@@ -307,6 +308,7 @@ namespace PizzaEmporium
             RadioButton special2 = new RadioButton();
             special2.Name = "radSpecial2";
             special2.Text = "Medium cheese pizza, insalata salad,\n and medium drink";
+            special2.Tag = "special2";
             special2.TabIndex = 6;
             special2.Location = new Point(37, 115);
             special2.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
