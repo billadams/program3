@@ -8,16 +8,30 @@ namespace PizzaEmporium
 {
     class Order : IOrder
     {
+        private int mOrderID;
+        private DateTime mToday;
+        private string mBranchName = "Bill Adams";
+        private decimal mOrderTax;
+        private decimal mOrderTotal;
+
+        //private List<Order> orders;
+
+        public Order()
+        {
+
+        }
+
+        public Order(int orderID)
+        {
+            this.OrderID = orderID;
+            this.Date = DateTime.Today;
+        }
+
         public string BranchName
         {
             get
             {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
+                return mBranchName;
             }
         }
 
@@ -25,12 +39,12 @@ namespace PizzaEmporium
         {
             get
             {
-                throw new NotImplementedException();
+                return mToday;
             }
 
             set
             {
-                throw new NotImplementedException();
+                mToday = value;
             }
         }
 
@@ -38,25 +52,36 @@ namespace PizzaEmporium
         {
             get
             {
-                throw new NotImplementedException();
+                return mOrderID;
             }
 
             set
             {
-                throw new NotImplementedException();
+                mOrderID = value;
             }
         }
 
+        public decimal OrderTax
+        {
+            get
+            {
+                return mOrderTax;
+            }
+            set
+            {
+                mOrderTax = value;
+            }
+        }
         public decimal OrderTotal
         {
             get
             {
-                throw new NotImplementedException();
+                return mOrderTotal;
             }
 
             set
             {
-                throw new NotImplementedException();
+                mOrderTotal = value;
             }
         }
 

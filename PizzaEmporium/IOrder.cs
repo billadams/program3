@@ -33,7 +33,7 @@ namespace PizzaEmporium
         string BranchName
         {
             get;
-            set;
+            //set;
         }
 
         decimal OrderTotal
@@ -42,5 +42,10 @@ namespace PizzaEmporium
             set;
         }
 
+        decimal OrderTax
+        {
+            get;
+            set;
+        }
     }
 }

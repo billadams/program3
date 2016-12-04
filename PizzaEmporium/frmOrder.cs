@@ -20,6 +20,7 @@ namespace PizzaEmporium
         // Keep track of the current option/checkboxes we're working with.
         private RadioButton selectedrb;
         private List<CheckBox> selectedcb; /*= new List<CheckBox>();*/
+        private List<Order> orders;
 
         private void frmOrder_Load(object sender, EventArgs e)
         {
