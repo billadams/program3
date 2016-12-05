@@ -20,7 +20,7 @@ namespace PizzaEmporium
         // Keep track of the current option/checkboxes we're working with.
         private RadioButton selectedrb;
         private List<CheckBox> selectedcb; /*= new List<CheckBox>();*/
-        private List<Order> orders;
+        public Order order = new Order();
 
         private void frmOrder_Load(object sender, EventArgs e)
         {
@@ -57,6 +57,7 @@ namespace PizzaEmporium
             {
                 int currentItem = lstReceipt.SelectedIndex;
                 lstReceipt.Items.RemoveAt(currentItem);
+                order.DeleteItem(currentItem);
             }
         }
 
@@ -80,6 +81,7 @@ namespace PizzaEmporium
 
                 Pizza pizza = new Pizza(105, "Pizza", selectedrb.Text, toppings);
                 lstReceipt.Items.Add(pizza.GetDisplayText());
+                order.AddItem(pizza);
 
                 // Clear the values of the option and checkboxes.
                 selectedrb.Checked = false;
@@ -102,6 +104,7 @@ namespace PizzaEmporium
             {
                 Drink drink = new Drink(106, "Drink", selectedrb.Text);
                 lstReceipt.Items.Add(drink.GetDisplayText());
+                order.AddItem(drink);
 
                 selectedrb.Checked = false;
                 selectedrb = null;
@@ -118,6 +121,7 @@ namespace PizzaEmporium
             {
                 Salad salad = new Salad(107, "Salad", selectedrb.Text);
                 lstReceipt.Items.Add(salad.GetDisplayText());
+                order.AddItem(salad);
 
                 selectedrb.Checked = false;
                 selectedrb = null;
@@ -134,6 +138,7 @@ namespace PizzaEmporium
             {
                 Specials special = new Specials(107, selectedrb.Text, Convert.ToString(selectedrb.Tag));
                 lstReceipt.Items.Add(special.GetDisplayText());
+                order.AddItem(special);
 
                 selectedrb.Checked = false;
                 selectedrb = null;
@@ -159,6 +164,7 @@ namespace PizzaEmporium
 
                 Promotional promotional = new Promotional(108, "Promotional", items);
                 lstReceipt.Items.Add(promotional.GetDisplayText());
+                order.AddItem(promotional);
 
                 foreach (CheckBox cb in selectedcb)
                 {

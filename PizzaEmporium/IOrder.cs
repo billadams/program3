@@ -8,32 +8,20 @@ namespace PizzaEmporium
 {
     public interface IOrder
     {
-        decimal CalculateTax();
+        decimal CalculateTax(decimal price);
 
-        decimal TotalOrder();
+        decimal TotalOrder(decimal price);
 
-        void AddItem();
+        void AddItem(Product product);
 
         void SaveOrder();
 
-        void DeleteItem();
+        void DeleteItem(int index);
 
         int OrderID
         {
             get;
             set;
-        }
-
-        DateTime Date
-        {
-            get;
-            set;
-        }
-
-        string BranchName
-        {
-            get;
-            //set;
         }
 
         decimal OrderTotal

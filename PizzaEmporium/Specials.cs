@@ -80,7 +80,7 @@ namespace PizzaEmporium
 
         public override string GetDisplayText()
         {
-            return this.Description + ": " + this.Type + " - " + this.Price.ToString("c");
+            return this.Description + " (" + this.Type + ") - " + this.Price.ToString("c");
         }
     }
 }

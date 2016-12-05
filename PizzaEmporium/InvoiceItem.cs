@@ -8,5 +8,12 @@ namespace PizzaEmporium
 {
     class InvoiceItem
     {
+        private int mQuantity;
+        private string description;
+        private decimal subtotal;
+        private decimal tax;
+        private decimal grandTotal;
+
+
     }
 }

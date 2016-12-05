@@ -6,47 +6,39 @@ using System.Threading.Tasks;
 
 namespace PizzaEmporium
 {
-    class Order : IOrder
+    public class Order : IOrder
     {
         private int mOrderID;
-        private DateTime mToday;
-        private string mBranchName = "Bill Adams";
+        private int mQuantity;
         private decimal mOrderTax;
         private decimal mOrderTotal;
-
-        //private List<Order> orders;
+        private List<Product> products = new List<Product>();
+        private static int nextNumber = 5000;
 
         public Order()
         {
-
+            OrderID = nextNumber;
+            nextNumber++;
         }
 
-        public Order(int orderID)
+        public Order(Product product)
         {
-            this.OrderID = orderID;
-            this.Date = DateTime.Today;
+            OrderID = nextNumber;
+            nextNumber++;
+            AddItem(product);
         }
 
-        public string BranchName
-        {
-            get
-            {
-                return mBranchName;
-            }
-        }
-
-        public DateTime Date
-        {
-            get
-            {
-                return mToday;
-            }
-
-            set
-            {
-                mToday = value;
-            }
-        }
+        //public Product this[int i]
+        //{
+        //    get
+        //    {
+        //        return products[i];
+        //    }
+        //    set
+        //    {
+        //        products[i] = value;
+        //    }
+        //}
 
         public int OrderID
         {
@@ -85,19 +77,20 @@ namespace PizzaEmporium
             }
         }
 
-        public void AddItem()
+        public void AddItem(Product product)
         {
-            throw new NotImplementedException();
+            products.Add(product);
+            this.OrderTax += CalculateTax(product.Price);
+            this.OrderTotal += TotalOrder(product.Price);
         }
 
-        public decimal CalculateTax()
+        public void DeleteItem(int index)
         {
-            throw new NotImplementedException();
-        }
+            Product currentProduct = products[index];
 
-        public void DeleteItem()
-        {
-            throw new NotImplementedException();
+            this.OrderTax -= CalculateTax(currentProduct.Price);
+            this.OrderTotal -= TotalOrder(currentProduct.Price);
+            products.RemoveAt(index);
         }
 
         public void SaveOrder()
@@ -105,9 +98,23 @@ namespace PizzaEmporium
             throw new NotImplementedException();
         }
 
-        public decimal TotalOrder()
+        public decimal CalculateTax(decimal price)
         {
-            throw new NotImplementedException();
+            decimal tax = .07M;
+            decimal productTax = 0M;
+
+            productTax = price * tax;
+
+            return productTax;
+        }
+
+        public decimal TotalOrder(decimal price)
+        {
+            decimal total = 0M;
+
+            total = price + CalculateTax(price);
+
+            return total;
         }
     }
 }
