@@ -77,6 +77,14 @@ namespace PizzaEmporium
             }
         }
 
+        public List<Product> Products
+        {
+            get
+            {
+                return products;
+            }
+        }
+
         public void AddItem(Product product)
         {
             products.Add(product);

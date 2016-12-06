@@ -19,7 +19,7 @@ namespace PizzaEmporium
 
         // Keep track of the current option/checkboxes we're working with.
         private RadioButton selectedrb;
-        private List<CheckBox> selectedcb; /*= new List<CheckBox>();*/
+        private List<CheckBox> selectedcb;
         public Order order = new Order();
 
         private void frmOrder_Load(object sender, EventArgs e)
@@ -29,6 +29,11 @@ namespace PizzaEmporium
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (order == null)
+            {
+                order = new Order();
+            }
+
             if (grpDisplay.Text == "Pizza")
             {
                 AddPizza();
@@ -58,11 +63,16 @@ namespace PizzaEmporium
                 int currentItem = lstReceipt.SelectedIndex;
                 lstReceipt.Items.RemoveAt(currentItem);
                 order.DeleteItem(currentItem);
+
             }
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
+            string output = InvoiceItem.PrintReceipt(order);
+            MessageBox.Show(output);
+            order = null;
+
             lstReceipt.Items.Clear();
         }
 

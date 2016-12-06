@@ -6,14 +6,23 @@ using System.Threading.Tasks;
 
 namespace PizzaEmporium
 {
-    class InvoiceItem
+    public static class InvoiceItem
     {
-        private int mQuantity;
-        private string description;
-        private decimal subtotal;
-        private decimal tax;
-        private decimal grandTotal;
+        public static string PrintReceipt(Order order)
+        {
+            string output = "";
+            List<Product> products = new List<Product>();
 
+            output += order.OrderID + "\n";
+
+            products = order.Products;
+            foreach(Product p in products)
+            {
+                output += p.GetDisplayText() + "\n";
+            }
+
+            return output;
+        }
 
     }
 }
