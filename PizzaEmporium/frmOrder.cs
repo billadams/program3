@@ -17,7 +17,7 @@ namespace PizzaEmporium
             InitializeComponent();
         }
 
-        // Keep track of the current option/checkboxes we're working with.
+        // Keep track of the current option/checkboxes the form uses for gathering order information.
         private RadioButton selectedrb;
         private List<CheckBox> selectedcb;
         public Order order = null;
@@ -25,6 +25,8 @@ namespace PizzaEmporium
         private void frmOrder_Load(object sender, EventArgs e)
         {
             btnPizza.PerformClick();
+            btnRemove.Enabled = false;
+            btnFinish.Enabled = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -56,6 +58,15 @@ namespace PizzaEmporium
             {
                 AddCoolStuff();
             }
+
+            if (!btnRemove.Enabled)
+            {
+                btnRemove.Enabled = true;
+            }
+            if (!btnFinish.Enabled)
+            {
+                btnFinish.Enabled = true;
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -66,23 +77,32 @@ namespace PizzaEmporium
                 lstReceipt.Items.RemoveAt(currentItem);
                 order.DeleteItem(currentItem);
             }
+
+            if (lstReceipt.Items.Count == 0)
+            {
+                btnFinish.Enabled = false;
+                btnRemove.Enabled = false;
+            }
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
+            // Format and display a receipt to the user.
             StringBuilder output = InvoiceItem.PrintReceipt(order);
             frmReceipt frmReceipt = new frmReceipt();
-
             frmReceipt.ShowReceipt(output);
-            //MessageBox.Show(Convert.ToString(output));
 
+            // Save the order to a database and clear the GUI listbox.
             if (SaveOrderDA.SaveOrder(order))
             {
                 lstReceipt.Items.Clear();
             }
 
             // Set order to null to prepare it for the next order.
-            order = null;   
+            order = null;
+
+            btnFinish.Enabled = false;
+            btnRemove.Enabled = false;  
         }
 
         private void AddPizza()
@@ -98,7 +118,7 @@ namespace PizzaEmporium
                     i++;
                 }
 
-                Pizza pizza = new Pizza(105, "Pizza", selectedrb.Text, toppings);
+                Pizza pizza = new Pizza(105, selectedrb.Text + " Pizza", selectedrb.Text, toppings);
                 lstReceipt.Items.Add(pizza.GetDisplayText());
                 order.AddItem(pizza);
 
@@ -121,7 +141,7 @@ namespace PizzaEmporium
         {
             try
             {
-                Drink drink = new Drink(106, "Drink", selectedrb.Text);
+                Drink drink = new Drink(106, selectedrb.Text + " Drink", selectedrb.Text);
                 lstReceipt.Items.Add(drink.GetDisplayText());
                 order.AddItem(drink);
 
@@ -138,7 +158,7 @@ namespace PizzaEmporium
         {
             try
             {
-                Salad salad = new Salad(107, "Salad", selectedrb.Text);
+                Salad salad = new Salad(107, selectedrb.Text + " Salad", selectedrb.Text);
                 lstReceipt.Items.Add(salad.GetDisplayText());
                 order.AddItem(salad);
 
@@ -155,7 +175,7 @@ namespace PizzaEmporium
         {
             try
             {
-                Specials special = new Specials(107, selectedrb.Text, Convert.ToString(selectedrb.Tag));
+                Specials special = new Specials(108, selectedrb.Text, Convert.ToString(selectedrb.Tag));
                 lstReceipt.Items.Add(special.GetDisplayText());
                 order.AddItem(special);
 
@@ -181,7 +201,7 @@ namespace PizzaEmporium
                     i++;
                 }
 
-                Promotional promotional = new Promotional(108, "Promotional", items);
+                Promotional promotional = new Promotional(109, "Promotional", items);
                 lstReceipt.Items.Add(promotional.GetDisplayText());
                 order.AddItem(promotional);
 
@@ -201,15 +221,6 @@ namespace PizzaEmporium
         {
             grpDisplay.Controls.Clear();
             grpDisplay.Text = "Pizza";
-
-            //disabledButton = this.btnPizza.Name;
-            //string[] sizes = { "sizeSmall", "sizeMedium", "sizeLarge" };
-
-            //for (int i = 0; i < sizes.Length; i++)
-            //{
-            //    RadioButton radioButton = new RadioButton();
-
-            //}
 
             RadioButton sizeSmall = new RadioButton();
             sizeSmall.Name = "radSmall";
@@ -281,9 +292,6 @@ namespace PizzaEmporium
             grpDisplay.Controls.Clear();
             grpDisplay.Text = "Drinks";
 
-            //disabledButton.Enabled = true;
-            //this.btnDrinks.Enabled = false;
-
             RadioButton smallDrink = new RadioButton();
             smallDrink.Name = "radSmallDrink";
             smallDrink.Text = "Small";
@@ -346,7 +354,7 @@ namespace PizzaEmporium
 
             RadioButton special1 = new RadioButton();
             special1.Name = "radSpecial1";
-            special1.Text = "Medium hamburger pizza, house salad,\n and medium drink";
+            special1.Text = "Medium hamburger pizza, House salad, Medium drink";
             special1.Tag = "Special1";
             special1.TabIndex = 5;
             special1.Location = new Point(37, 48);
@@ -356,7 +364,7 @@ namespace PizzaEmporium
 
             RadioButton special2 = new RadioButton();
             special2.Name = "radSpecial2";
-            special2.Text = "Medium cheese pizza, insalata salad,\n and medium drink";
+            special2.Text = "Medium cheese pizza, Insalata salad, Medium drink";
             special2.Tag = "Special2";
             special2.TabIndex = 6;
             special2.Location = new Point(37, 115);

@@ -34,6 +34,7 @@
             // 
             // txtReceipt
             // 
+            this.txtReceipt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtReceipt.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReceipt.Location = new System.Drawing.Point(12, 12);
             this.txtReceipt.Multiline = true;

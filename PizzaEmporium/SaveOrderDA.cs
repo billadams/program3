@@ -31,12 +31,6 @@ namespace PizzaEmporium
                     return true;
                 else
                     return false;
-
-                //string selectStatement = "SELECT IDENT_CURRENT('SavedOrders') FROM SavedOrders";
-                //SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-                //int orderID = Convert.ToInt32(selectCommand.ExecuteScalar());
-
-                //return orderID;
             }
             catch (SqlException ex)
             {

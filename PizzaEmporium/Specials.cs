@@ -36,7 +36,7 @@ namespace PizzaEmporium
 
         public decimal GetSpecialPrice()
         {
-            decimal typeCost = 0.0M;
+            decimal totalCost = 0.0M;
             string[] toppings = new string[1];
             Pizza pizza;
             Salad salad;
@@ -70,12 +70,12 @@ namespace PizzaEmporium
                 drinkCost = drink.GetDrinkPrice();
             }
 
-            typeCost = pizzaCost + saladCost + drinkCost;
+            totalCost = pizzaCost + saladCost + drinkCost;
 
             // 10% discount
-            typeCost /= 1.10M;
+            totalCost /= 1.10M;
 
-            return typeCost;
+            return totalCost;
         }
 
         public override string GetDisplayText()

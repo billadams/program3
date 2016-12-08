@@ -12,53 +12,48 @@ namespace PizzaEmporium
     {
         public static StringBuilder PrintReceipt(Order order)
         {
-            //string output = "";
             List<Product> products = new List<Product>();
-            //const int QTY_WIDTH = 10;
-            //const int DESC_WIDTH = 34;
-            //const int PRICE_WIDTH = 10;
-
+            decimal subTotal = 0.0M;
             StringBuilder output = new StringBuilder();
 
+            // Format the receipt form.
             output.Append("-----------------------------------------\r\n");
             output.Append("Qty    Description                  Price\r\n"); // 30
-            output.Append("-----------------------------------------\r\n");
+            output.Append("-----------------------------------------\r\n"); // 41
 
             products = order.Products;
             foreach (Product p in products)
             {
-                output.Append(String.Format("{0, -5}  {1, -28} {2, 5}", 1, p.Description, Convert.ToString(p.Price) + "\r\n"));
+                if (p.GetType().Name == "Specials")
+                {
+                    output.Append(String.Format("{0, -5}  {1, -28} {2, 7}", 1, "Special", p.Price.ToString(("n2")) + "\r\n"));
+                    string[] items = p.Description.Split(',');
+                    foreach (string item in items)
+                    {
+                        output.Append(String.Format("{0, -5}  {1, -28} {2, 7}", 1, "- " + item.Trim(), "" + "\r\n"));
+                    }
+                }
+                else if (p.GetType().Name == "Pizza")
+                {
+                    output.Append(String.Format("{0, -5}  {1, -28} {2, 7}", 1, p.Description, p.Price.ToString(("n2")) + "\r\n"));
+                    string[] toppings = (Pizza)p.GetPizzaToppings((Pizza)p);
+                    foreach (string topping in toppings)
+                    {
+                        output.Append(String.Format("{0, -5}  {1, -28} {2, 7}", 1, "- " + topping.Trim(), "" + "\r\n"));
+                    }
+                }
+                else
+                {
+                    output.Append(String.Format("{0, -5}  {1, -28} {2, 7}", 1, p.Description, p.Price.ToString(("n2")) + "\r\n"));
+                }
+                subTotal += p.Price;
             }
 
-
-
-
-            //output.Append("------------------------------");
-
-
-
-            //output.Append("Qty".PadRight(QTY_WIDTH));
-            //output.Append("Description".PadRight(DESC_WIDTH));
-            //output.Append("Price".PadRight(PRICE_WIDTH));
-            //output.Append("\n");
-
-            //output.Append("=========".PadRight(QTY_WIDTH));
-            //output.Append("=================================".PadRight(DESC_WIDTH));
-            //output.Append("=========".PadRight(PRICE_WIDTH));
-            //output.Append("\n");
-
-
-            //output += "Pizza Emporium\n\n";
-            //output += DateTime.Today + "\n\n";
-
-
-            //output += "Order ID: " + order.OrderID + "\n";
-
-            //products = order.Products;
-            //foreach(Product p in products)
-            //{
-            //      output += p.GetDisplayText() + "\n";
-            //}
+            output.Append("-----------------------------------------\r\n");
+            output.Append(String.Format("{0, -5}  {1, 27} {2, 7}", "", "Subtotal:", subTotal.ToString("c") + "\r\n"));
+            output.Append(String.Format("{0, -5}  {1, 27} {2, 8}", "", "Tax:", order.OrderTax.ToString("n2") + "\r\n"));
+            output.Append("-----------------------------------------\r\n");
+            output.Append(String.Format("{0, -5}  {1, 27} {2, 7}", "", "Grand Total:", order.OrderTotal.ToString("c") + "\r\n"));
 
             return output;
         }

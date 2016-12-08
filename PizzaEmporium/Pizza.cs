@@ -73,6 +73,13 @@ namespace PizzaEmporium
             return pizzaCost;
         }
 
+        public string[] GetPizzaToppings(Pizza pizza)
+        {
+            string[] toppings = this.Toppings;
+
+            return toppings;
+        }
+
         public override string GetDisplayText()
         {
             return this.Size + " " + this.Description + " " +

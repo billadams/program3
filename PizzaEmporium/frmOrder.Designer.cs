@@ -54,7 +54,7 @@
             // 
             // btnDrinks
             // 
-            this.btnDrinks.Location = new System.Drawing.Point(190, 41);
+            this.btnDrinks.Location = new System.Drawing.Point(221, 41);
             this.btnDrinks.Name = "btnDrinks";
             this.btnDrinks.Size = new System.Drawing.Size(90, 64);
             this.btnDrinks.TabIndex = 1;
@@ -64,7 +64,7 @@
             // 
             // btnSalads
             // 
-            this.btnSalads.Location = new System.Drawing.Point(339, 41);
+            this.btnSalads.Location = new System.Drawing.Point(394, 41);
             this.btnSalads.Name = "btnSalads";
             this.btnSalads.Size = new System.Drawing.Size(90, 64);
             this.btnSalads.TabIndex = 2;
@@ -74,7 +74,7 @@
             // 
             // btnSpecials
             // 
-            this.btnSpecials.Location = new System.Drawing.Point(485, 41);
+            this.btnSpecials.Location = new System.Drawing.Point(569, 41);
             this.btnSpecials.Name = "btnSpecials";
             this.btnSpecials.Size = new System.Drawing.Size(90, 64);
             this.btnSpecials.TabIndex = 3;
@@ -84,7 +84,7 @@
             // 
             // btnCoolStuff
             // 
-            this.btnCoolStuff.Location = new System.Drawing.Point(628, 41);
+            this.btnCoolStuff.Location = new System.Drawing.Point(745, 41);
             this.btnCoolStuff.Name = "btnCoolStuff";
             this.btnCoolStuff.Size = new System.Drawing.Size(90, 64);
             this.btnCoolStuff.TabIndex = 4;
@@ -96,7 +96,7 @@
             // 
             this.grpDisplay.Location = new System.Drawing.Point(48, 160);
             this.grpDisplay.Name = "grpDisplay";
-            this.grpDisplay.Size = new System.Drawing.Size(319, 246);
+            this.grpDisplay.Size = new System.Drawing.Size(353, 246);
             this.grpDisplay.TabIndex = 5;
             this.grpDisplay.TabStop = false;
             this.grpDisplay.Text = "Pizza";
@@ -104,7 +104,7 @@
             // lstReceipt
             // 
             this.lstReceipt.FormattingEnabled = true;
-            this.lstReceipt.Location = new System.Drawing.Point(501, 160);
+            this.lstReceipt.Location = new System.Drawing.Point(442, 160);
             this.lstReceipt.Name = "lstReceipt";
             this.lstReceipt.Size = new System.Drawing.Size(394, 290);
             this.lstReceipt.TabIndex = 6;
@@ -112,7 +112,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(238, 490);
+            this.btnAdd.Location = new System.Drawing.Point(176, 494);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(112, 23);
             this.btnAdd.TabIndex = 13;
@@ -122,7 +122,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(448, 490);
+            this.btnRemove.Location = new System.Drawing.Point(386, 494);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(112, 23);
             this.btnRemove.TabIndex = 14;
@@ -132,7 +132,7 @@
             // 
             // btnFinish
             // 
-            this.btnFinish.Location = new System.Drawing.Point(640, 490);
+            this.btnFinish.Location = new System.Drawing.Point(578, 494);
             this.btnFinish.Name = "btnFinish";
             this.btnFinish.Size = new System.Drawing.Size(112, 23);
             this.btnFinish.TabIndex = 15;
@@ -143,7 +143,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(711, 461);
+            this.label1.Location = new System.Drawing.Point(651, 461);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 16;
@@ -151,7 +151,7 @@
             // 
             // txtSubtotal
             // 
-            this.txtSubtotal.Location = new System.Drawing.Point(795, 458);
+            this.txtSubtotal.Location = new System.Drawing.Point(735, 458);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.ReadOnly = true;
             this.txtSubtotal.Size = new System.Drawing.Size(100, 20);
@@ -162,7 +162,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 534);
+            this.ClientSize = new System.Drawing.Size(894, 534);
             this.Controls.Add(this.txtSubtotal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAdd);
