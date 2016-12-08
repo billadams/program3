@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PizzaEmporium
 {
-    class CurrentOrderDA
+    public static class CurrentOrderDA
     {
+
     }
 }

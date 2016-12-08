@@ -20,7 +20,7 @@ namespace PizzaEmporium
         // Keep track of the current option/checkboxes we're working with.
         private RadioButton selectedrb;
         private List<CheckBox> selectedcb;
-        public Order order = new Order();
+        public Order order = null;
 
         private void frmOrder_Load(object sender, EventArgs e)
         {
@@ -29,6 +29,8 @@ namespace PizzaEmporium
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            // Either order hasn't been used or we've set it 
+            // to null when we finished up a previous order.
             if (order == null)
             {
                 order = new Order();
@@ -63,17 +65,24 @@ namespace PizzaEmporium
                 int currentItem = lstReceipt.SelectedIndex;
                 lstReceipt.Items.RemoveAt(currentItem);
                 order.DeleteItem(currentItem);
-
             }
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
-            string output = InvoiceItem.PrintReceipt(order);
-            MessageBox.Show(output);
-            order = null;
+            StringBuilder output = InvoiceItem.PrintReceipt(order);
+            frmReceipt frmReceipt = new frmReceipt();
 
-            lstReceipt.Items.Clear();
+            frmReceipt.ShowReceipt(output);
+            //MessageBox.Show(Convert.ToString(output));
+
+            if (SaveOrderDA.SaveOrder(order))
+            {
+                lstReceipt.Items.Clear();
+            }
+
+            // Set order to null to prepare it for the next order.
+            order = null;   
         }
 
         private void AddPizza()
