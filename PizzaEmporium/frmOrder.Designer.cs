@@ -143,7 +143,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(651, 461);
+            this.label1.Location = new System.Drawing.Point(673, 458);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 16;
@@ -151,12 +151,14 @@
             // 
             // txtSubtotal
             // 
-            this.txtSubtotal.Location = new System.Drawing.Point(735, 458);
+            this.txtSubtotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSubtotal.Location = new System.Drawing.Point(754, 458);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.ReadOnly = true;
-            this.txtSubtotal.Size = new System.Drawing.Size(100, 20);
+            this.txtSubtotal.Size = new System.Drawing.Size(78, 13);
             this.txtSubtotal.TabIndex = 17;
             this.txtSubtotal.TabStop = false;
+            this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // frmOrder
             // 

@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace PizzaEmporium
 {
+    /*****************************************************************
+    * Name: Bill Adams
+    * Project: Program 3
+    * Date: 12/8/2016
+    * Description: Order pizza and other items.
+    * **************************************************************/
     class Pizza : Product
     {
         private string mSize;

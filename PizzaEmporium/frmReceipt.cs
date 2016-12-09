@@ -10,6 +10,12 @@ using System.Windows.Forms;
 
 namespace PizzaEmporium
 {
+    /*****************************************************************
+    * Name: Bill Adams
+    * Project: Program 3
+    * Date: 12/8/2016
+    * Description: Order pizza and other items.
+    * **************************************************************/
     public partial class frmReceipt : Form
     {
         public frmReceipt()
@@ -24,9 +30,8 @@ namespace PizzaEmporium
 
         public void ShowReceipt(StringBuilder output)
         {
-            txtReceipt.Text = Convert.ToString(output);
+            lblReceipt.Text = Convert.ToString(output);
             this.ShowDialog();
-
         }
     }
 }

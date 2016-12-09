@@ -61,7 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CurrentOrderDA.cs" />
     <Compile Include="Drink.cs" />
     <Compile Include="frmOrder.cs">
       <SubType>Form</SubType>

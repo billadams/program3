@@ -2,6 +2,12 @@
 
 namespace PizzaEmporium
 {
+    /*****************************************************************
+    * Name: Bill Adams
+    * Project: Program 3
+    * Date: 12/8/2016
+    * Description: Order pizza and other items.
+    * **************************************************************/
     public static class SavedOrdersDB
     {
         public static SqlConnection GetConnection()
@@ -10,7 +16,6 @@ namespace PizzaEmporium
             SqlConnection connection = new SqlConnection(connectionString);
 
             return connection;
-
         }
     }
 }

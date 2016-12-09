@@ -10,6 +10,12 @@ using System.Windows.Forms;
 
 namespace PizzaEmporium
 {
+    /*****************************************************************
+    * Name: Bill Adams
+    * Project: Program 3
+    * Date: 12/8/2016
+    * Description: Order pizza and other items.
+    * **************************************************************/
     public partial class frmOrder : Form
     {
         public frmOrder()
@@ -21,6 +27,7 @@ namespace PizzaEmporium
         private RadioButton selectedrb;
         private List<CheckBox> selectedcb;
         public Order order = null;
+        decimal subtotal;
 
         private void frmOrder_Load(object sender, EventArgs e)
         {
@@ -67,6 +74,9 @@ namespace PizzaEmporium
             {
                 btnFinish.Enabled = true;
             }
+
+            subtotal = order.OrderTotal - order.OrderTax;
+            txtSubtotal.Text = subtotal.ToString("c");
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -83,6 +93,9 @@ namespace PizzaEmporium
                 btnFinish.Enabled = false;
                 btnRemove.Enabled = false;
             }
+
+            subtotal = order.OrderTotal - order.OrderTax;
+            txtSubtotal.Text = subtotal.ToString("c");
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
@@ -93,7 +106,7 @@ namespace PizzaEmporium
             frmReceipt.ShowReceipt(output);
 
             // Save the order to a database and clear the GUI listbox.
-            if (SaveOrderDA.SaveOrder(order))
+            if (order.SaveOrder())
             {
                 lstReceipt.Items.Clear();
             }
@@ -102,7 +115,10 @@ namespace PizzaEmporium
             order = null;
 
             btnFinish.Enabled = false;
-            btnRemove.Enabled = false;  
+            btnRemove.Enabled = false;
+
+            subtotal = 0M;
+            txtSubtotal.Text = subtotal.ToString("c");
         }
 
         private void AddPizza()
@@ -118,7 +134,7 @@ namespace PizzaEmporium
                     i++;
                 }
 
-                Pizza pizza = new Pizza(105, selectedrb.Text + " Pizza", selectedrb.Text, toppings);
+                Pizza pizza = new Pizza(105, "Pizza", selectedrb.Text, toppings);
                 lstReceipt.Items.Add(pizza.GetDisplayText());
                 order.AddItem(pizza);
 
@@ -141,7 +157,7 @@ namespace PizzaEmporium
         {
             try
             {
-                Drink drink = new Drink(106, selectedrb.Text + " Drink", selectedrb.Text);
+                Drink drink = new Drink(106, "Drink", selectedrb.Text);
                 lstReceipt.Items.Add(drink.GetDisplayText());
                 order.AddItem(drink);
 
@@ -158,7 +174,7 @@ namespace PizzaEmporium
         {
             try
             {
-                Salad salad = new Salad(107, selectedrb.Text + " Salad", selectedrb.Text);
+                Salad salad = new Salad(107, "Salad", selectedrb.Text);
                 lstReceipt.Items.Add(salad.GetDisplayText());
                 order.AddItem(salad);
 
@@ -432,9 +448,8 @@ namespace PizzaEmporium
                 return;
             }
 
-            if (cb.Checked)
+            if (cb.Checked && !selectedcb.Contains(cb))
             {
-                //MessageBox.Show(cb.Text);
                 selectedcb.Add(cb);
             }
         }

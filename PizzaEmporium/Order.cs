@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace PizzaEmporium
 {
+    /*****************************************************************
+    * Name: Bill Adams
+    * Project: Program 3
+    * Date: 12/8/2016
+    * Description: Order pizza and other items.
+    * **************************************************************/
     public class Order : IOrder
     {
         private int mOrderID;
@@ -27,18 +33,6 @@ namespace PizzaEmporium
             nextNumber++;
             AddItem(product);
         }
-
-        //public Product this[int i]
-        //{
-        //    get
-        //    {
-        //        return products[i];
-        //    }
-        //    set
-        //    {
-        //        products[i] = value;
-        //    }
-        //}
 
         public int OrderID
         {
@@ -101,9 +95,12 @@ namespace PizzaEmporium
             products.RemoveAt(index);
         }
 
-        public void SaveOrder()
+        public bool SaveOrder()
         {
-            throw new NotImplementedException();
+            if (SaveOrderDA.SaveOrder(this))
+                return true;
+            else
+                return false;
         }
 
         public decimal CalculateTax(decimal price)
